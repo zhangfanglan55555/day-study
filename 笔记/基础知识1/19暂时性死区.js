@@ -12,3 +12,8 @@ console.log(typeof b);//'undefined' 在原有浏览器渲染机制下，基于ty
 
 console.log(typeof a );//a is not defined
 let a ;//如果当前作用域下变量使用let声明，再声明之前使用typeof检测不会发生js暂时性死区，会直接报错
+
+
+/**
+ * 暂时性死区：只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响
+ */

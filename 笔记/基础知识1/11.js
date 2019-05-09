@@ -16,3 +16,6 @@ function sum(){
     }
     return total;
 }
+
+Array.prototype.slice.call(arguments);
+Array.prototype.slice.call(arguments)
