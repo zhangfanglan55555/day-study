@@ -83,4 +83,14 @@
  *        2、全局栈内存只有在页面关闭的时候才会被释放
  *  
  *      如果当前栈内存没有释放，那么之前在栈内存中存储的基本类型值也不会被释放，能够一直保存下来
+ * 
+ * 
+ * [ macrotasks ] : setTimeout, setInterval, setImmediate, I/O, UI rendering
+   [ microtasks ]: process.nextTick, Promise, MutationObserver
+
+
+   如果某个microtask任务被推入到执行中，那么当主线程任务执行完成后，
+   会循环调用该队列任务中的下一个任务来执行，直到该任务队列到最后一个任务为止。
+   而事件循环每次只会入栈一个macrotask,
+   主线程执行完成该任务后又会检查microtasks队列并完成里面的所有任务后再执行macrotask的任务。
  *  */   

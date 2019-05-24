@@ -21,6 +21,7 @@ console.log(res);
 function fn(i) {
     return function (n) {
         console.log(n + (i++));
+        // console.log('i:'+i)
     }
 }
 var f = fn(10);
@@ -30,7 +31,7 @@ fn(30)(50);
 f(30);
 
 /**
- * 21
+ * 30
  * 60
  * 80
  * 41

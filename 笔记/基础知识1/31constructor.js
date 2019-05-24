@@ -32,7 +32,9 @@ var obj = new Object();//构造函数模式
  * num2是数字类的实例，num1也是；它只是js表达数字的方式之一，都可以使用数字类提供的属性和方法
  */
 
-    var num1 = 12;//12
-    typeof num1 // "number"
-    var num2 = new Number(12);//{12}
-    typeof num2 //'object'
+var num1 = 12;//12
+typeof num1 // "number"
+var num2 = new Number(12);//{12}
+typeof num2 //'object';
+num2++;
+typeof num2;//'number'

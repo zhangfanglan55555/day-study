@@ -5,6 +5,8 @@ var obj = {
         n *= 2;
         this.n += 2;//自执行函数this是window
         var n = 5;
+        console.log(this.n)
+        console.log(window.n)
         return function (m) {
             this.n *= 2//谁调用this是谁
             console.log(m + (++n))

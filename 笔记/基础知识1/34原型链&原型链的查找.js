@@ -22,7 +22,7 @@
 
   ary.length;
   ary.pop;
-  ary.__proto__pop;
+  ary.push;
   ary.hasOwnProperty;
 
   /**

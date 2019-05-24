@@ -104,4 +104,4 @@ let value = { name: 'xxx', age: 25, score: [12, 23, 34, 45] };
 // let { name: a } = value
 // let [b, ...c] = value.score
 
-let { name: a, score: [b, ...c] } = value
+let { name: a, age:b,score: [b, ...c] } = value

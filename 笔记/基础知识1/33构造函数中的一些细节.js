@@ -16,17 +16,22 @@ var f = new Fn;
 console.log(f);
 
 /**
- * instanceof:检测一个实例是否隶属于这个类
+ * instanceof:判断一个对象是否是另一个对象的实例
  */
 f instanceof Fn;//true;
 f instanceof Array;//false;
 f instanceof Object;//true(万物皆对象：所有的对象，包含创建的实例都是Object的实例)
 
 1 instanceof Number;//false
+new Number(1) instanceof Number // true
+/**
+ *  instanceof判断一个对象是否是另一个对象的实例，而数字1是基本数据类型，不是对象，
+    var a = new Number(1)；是通过包装类Number把数字1转换成对象
+ */
 
 
 // in 检测 当前对象是否存在某个属性，不管当前这个属性是对象的私有属性还是公有属性，只要有，结果就是true
-    '属性名' in 对象
+'属性名' in 对象
 
 //hasOwnProperty 检测当前属性是否为对象的私有属性(不仅要有这个属性，而且必须是私有的)
 对象.hasOwnProperty('属性名')

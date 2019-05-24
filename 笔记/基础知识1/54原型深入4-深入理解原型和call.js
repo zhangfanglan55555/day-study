@@ -86,7 +86,10 @@ Function.prototype.call.call(fn1);
 /**
  * 1
  * 2
- * 1
- * undefined
+ * 空   先找到CALL-AA 把它执行，它中的this是Function.prototype => 让F.P中的THIS变为FN1,然后让
+ *      F.P 执行，F.P是一个匿名函数也是一个空函数，执行没有任何的输出，
+ * 1  先找到CALL-AA 把它执行，它中的this是F.P.CALL,=>把F.P.CALL中的this变为fn1,
+ *             然后让F.P.CALL执行，F.P.CALL(CALL-AA)，第二次把它执行（此时它里面的this已经是FN1）
+ *              =》这一次的执行是让FN1执行
  */
 
