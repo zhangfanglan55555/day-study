@@ -56,10 +56,10 @@ console.log(res);//6
 
 // 答案
 ~function (pro) {
-    pro.plus = function plus() {
+    pro.plus = function plus(val) {
         return this + Number(val)
     }
-    pro.minius = function minius() {
+    pro.minius = function minius(val) {
         return this - Number(val);
     }
 

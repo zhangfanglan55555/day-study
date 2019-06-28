@@ -1,12 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    <script src="./test.js"></script>
+
+    <div class='header'>
+        <a href="javascript:;">价格</a>
+        <a href="javascript:;">热度</a>
+    </div>
+    <ul class="content">
+        <li class="item"></li>
+    </ul>
+    <script>
+        let getCss = function(curEle,attr){
+            if(window.getComputedStyle != undefined){
+                let val = window.getComputedStyle(curEle,null)[attr];
+                let reg = /^-?\d+(\.\d+)?(px|rem|em|pt)$/i;
+                reg.test(val) ? val = parseFloat(val) : null;
+                console.log(val);
+                return val
+            }
+        }
+        let item = document.getElementsByClassName('item')[0];
+        getCss(item,'height');
+        console.log('dddd')
+        // var str = `CallableDevice=1; CurrentAppVersion=4.4; HBApi.Client.Current.UserKey_ABCB37B0-5463-4EA9-9764-A8DA80CF1ACA=62b0a2ea-f38d-4d32-b506-a06f35047b15; HBApi.Client.Current.UserSecret_ABCB37B0-5463-4EA9-9764-A8DA80CF1ACA=A3B875C5F8364473791C65E1791AC95127056268998C5F4EC33D34ACA393C2F9EB22201FFD756F15; MobileAppType=1; MobileVersionId=11.4.1; OpenUDID=ea5d396f0fea47a0ab58d6219f7d97aa; PushToken=56c9bb1a21023aa5e93393695b96ca35d5a283fefd2f93636c1471e6dc109fc6`;
+        // function getAPPKey(name) {
+        //     var reg = /\s+/g, theRequest = new Object();
+        //     let strs = str.replace(reg, '').split(';');
+        //     for (var i = 0; i < strs.length; i++) {
+        //         theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+        //     }
+        //     console.log(theRequest)
+
+        // }
+        // getAPPKey();
+
+        // function getCookie(name) {
+        //     var arr,
+        //         // reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)"); //第一种reg，适合把key和secret全部传进去
+        //         reg = new RegExp("(^| )" + name + "([^;]*)=([^;]*)(;|$)"); //传部分关键字获取整个key
+        //     // log('arr', document.cookie.match(reg))
+        //     if (arr = str.match(reg)) {
+        //         // return unescape(arr[2]);
+        //         return unescape(arr[3]);
+        //     } else {
+        //         return null;
+        //     }
+        // }
+        // getCookie();
+    </script>
+    <!-- <script>
+        var productList = (function () {
+            var aList = document.getElementsByTagName('a');
+            var bindClick = function () {
+                [].forEach.call(aList, (curLink, index) => {
+                    curLink.flag = -1;
+                    curLink[index].onclick = function () {
+                        this.flag *= -1;//默认是升序
+                        let ary = ['data-price', 'data-hot'];
+                        let newProductList = [].slice.call(productList);
+                        newProductList.sort((a, b) => {
+                            let aInn = a.getAttribute(ary[index]),
+                                bInn = b.getAttribute(ary[index]);
+                            return (aInn - bInn) * this.flag;
+                        })
+                        var frg = document.createDocumentFragment();
+                        newProductList.forEach(curLi => {
+                            frg.appendChild(curLi)
+                        });
+                        productList.appendChild(frg);
+                        frg = null;
+
+                    }
+                })
+            }
+        })()
+    </script> -->
 </body>
+
 </html>

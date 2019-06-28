@@ -52,7 +52,7 @@ console.log(max)
 
 let fn = function () { console.log(this); }
 let obj = { fn: fn };
-(fn, obj.fn)();//window ,执行的是第二个OBJ.FN，但是方法中的this是window而不是obj
+(fn, obj.fn)();//window ,执行的是第二个OBJ.FN，但是方法中的this是window而不是obj，括号表达式会改变this
 (obj.fn)();//=> this:obj
 
 

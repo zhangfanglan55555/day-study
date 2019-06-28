@@ -91,7 +91,7 @@ ary.sort((a, b) => {
     return Math.round(Math.random() * 10 - 5);
 })
 // Math.floor(n); 返回小于等于n的最大整数。
-//Math.round() 方法可把一个数字舍入为最接近的整数。
+//Math.round() 取四舍五入整数。
 // Math.random() 结果为0-1间的一个随机数(包括0,不包括1) 
 //Math.random()*10-5 得到-5到5之间的随机数
 //Math,random()*10-1 得到1到10之间的随机数
@@ -163,7 +163,7 @@ Math.round(Math.random() * (最大值 - 最小值) + 最小值)
         ~function () {
 
             let sortList = function () {
-                let {index,flag } = this;
+                let { index, flag } = this;
                 //按照价格升序排列
                 //1.基于GET-ELEMENTS_BY_TAG_NAME获取的元素集合是一个类数组，不能直接使用数中的sort方法
                 // let productAry = Array.from(productList);
@@ -174,11 +174,11 @@ Math.round(Math.random() * (最大值 - 最小值) + 最小值)
                     let ary = ['data-time', 'data-price', 'data-hot'],
                         aInn = a.getAttribute([index]),
                         bInn = b.getAttribute([index]);
-                        if(index === 0){
-                            //将日期中的-替换为空串
-                            aInn = aInn.replace(/-/g,'');
-                            bInn = aInn.replace(/-/g,'');
-                        }
+                    if (index === 0) {
+                        //将日期中的-替换为空串
+                        aInn = aInn.replace(/-/g, '');
+                        bInn = aInn.replace(/-/g, '');
+                    }
                     return (aInn - bInn) * flag;//先升序后将序
 
                 })
@@ -197,11 +197,11 @@ Math.round(Math.random() * (最大值 - 最小值) + 最小值)
                 curLink.index = i;
                 curLink.onclick = function () {
                     //点击当前的A标签，我们需要让其余的A标签的flag回归原始值-1，这样下一次再点击某一个A标签，还是
-                        // 从-1开始乘，变为1，也就是从升序开始的。
+                    // 从-1开始乘，变为1，也就是从升序开始的。
                     //this是当前操作的A标签（价格）
-                    for(let j = 0;j<linkList.length;j++){
+                    for (let j = 0; j < linkList.length; j++) {
                         let item = linkList[i];
-                        if(item != this){
+                        if (item != this) {
                             item.flag = -1
                         }
                     }

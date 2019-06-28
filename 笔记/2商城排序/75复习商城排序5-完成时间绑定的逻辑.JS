@@ -37,7 +37,7 @@ let productRender = (function () {
     let bindClick = function () {
         [].forEach.call(linkList, (curLink, index) => {
             //循环三次，执行三次这个方法，每一次执行都会形成一个闭包，每一个闭包中保存
-            //了当前这个A对应的索引INDEX
+            //了当前这个A对应的索引INDEX，curLink对应item
             curLink.flag = -1;
             curLink.onclick = function () {
                 //1.给PRODUCT-LIST进行排序（依据点击列的不同）

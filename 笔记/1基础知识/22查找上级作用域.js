@@ -41,6 +41,11 @@ var x = fn();
 x();
 x();
 console.log(n);
+
+
+
+
+
 /**
  * 21
  * 22

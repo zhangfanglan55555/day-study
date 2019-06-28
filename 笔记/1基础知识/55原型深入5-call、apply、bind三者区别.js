@@ -14,12 +14,12 @@ fn.call(10, 20);
 fn.call()
 fn.call(undefined)
 fn.call(null)
-//this:window undefined undefined
+//都是this:window undefined undefined
 
 /**
  * call中的细节：
  * 1.非严格模式下，如果不传参或者传递的null、undefined,this指向window
- * 2.再严格模式下，第一个参数是谁，this就指向谁（包括null、undefined）不传，
+ * 2.在严格模式下，第一个参数是谁，this就指向谁（包括null、undefined）；不传，
  *   this是undefined
  */
 

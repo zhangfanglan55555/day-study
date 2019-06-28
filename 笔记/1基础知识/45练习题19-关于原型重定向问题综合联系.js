@@ -32,7 +32,7 @@ f2.__proto__.aa();
  * undefined,
  * 20,
  * f2.bb is not a function
- * 10
+ * 20
  * NaN// this:f2.__proto__， f2.__protp__上没有this.m,undefined+10 = NaN;
  * 
  */

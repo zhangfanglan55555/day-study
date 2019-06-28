@@ -38,11 +38,12 @@ productRender.init();
 
 
 /**
- * forEach:数组中的方法，用来遍历数组中每一项内容的
+ * forEach:数组中的方法，用来遍历数组中每一项内容的，return不起作用
  */
 let ary = [12, 23, 34];
 ary.forEach((item, index) => {
     console.log(item, index);
+    
     /**
      * item:当前遍历数组中这一项的值
      * index：当前遍历数组中这一项的索引

@@ -73,14 +73,22 @@ sum.call.call(opt)
 // }
 // fn.call(obj)
 
+function fn1() { console.log(1) }
+function fn2() { console.log(2) }
 
-function fn1() { console.log(1)}
-function fn2() { console.log(2)}
-
-fn1.call(fn2);
+fn1.call(fn2);//找到CALL-AA把它执行，CALL-AA中的this是fn1,第一个参数传递的是fn2 => 最后在CALL-AA当中执行的
+// 是FN1 = > 1
 fn1.call.call(fn2);
+//找到CALL-AA让它执行，CALL-AA中的this是FN1.CALL,第一个参数是FN2,(把FN1.CALL中的this变为FN2,再让Fn1.call执行
+// =》 先找到CALL-AA把它执行，只不过此时它中的this是Fn2 => 让fn2中的this变为undefined,因为执行fn1.call的时候没有
+// 传递参数值，然后让FN2执行)  =》 fn1.call = a=> a.call(fn2) = > fn2.call
 Function.prototype.call(fn1);
+// 先找到callAA把它执行，它中的this是Function.prototype = > 让F.p中的this变为fn1,然后让F.p执行
 Function.prototype.call.call(fn1);
+
+
+
+// Function.prototype 是个匿名函数，默认返回undefined.但是用法都跟对象一样
 
 //一个call执行前面的，两个及两个以上的call让后面的执行
 /**
