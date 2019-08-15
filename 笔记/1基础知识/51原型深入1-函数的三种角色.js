@@ -72,7 +72,7 @@ var f = new Fn();//this:f,
 f.n;//undefined,n是私有变量和实例没有关系
 f.m;//100 实例的私有属性
 f.aa();//'aa'  实例通过__proto__找到Fn.prototype上的方法
-f.bb();//bb is not a function
+f.bb();//bb is not a function  对象的私有属性不被实例继承
 
 
 

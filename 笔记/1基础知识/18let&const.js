@@ -6,7 +6,7 @@
  * 虽然没有变量提升，但是在当前作用域自上而下执行之前，浏览器会做重复性检测（自上而下查找当前作用域下所有变量，一旦发现有重复的
  * 直接抛出异常，代码不会再执行。也叫做语法检测.虽然没有把变量提前声明定义，但是浏览器已经记住了，当前作用域有哪些变量）
  */
-console.log(a);//a is not defined
+console.log(a);//Cannot access 'a' before initialization 初始化前无法访问'a'
 let a = 12;
 console.log(window.a);//undefined
 
@@ -14,7 +14,7 @@ console.log(window.a);//undefined
 
 let a =10,b=10;
 let fn = function(){
-    console.log(a,b);//a is not defined报错不往下继续执行 10
+    console.log(a,b);//Cannot access 'a' before initialization 初始化前无法访问'a'  10
     let a = b =20;
     console.log(a,b);//20,20
 }

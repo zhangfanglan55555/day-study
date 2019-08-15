@@ -11,7 +11,7 @@ let fn1 = function (...ary) {
     }).pop();
     ary.shift();
     // return ary;
-    let total = eval(`${ary.join('+')}`);
+    let total = eval(ary.join('+'));
     return (total/ary.length).toFixed(2)
 }
 

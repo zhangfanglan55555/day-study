@@ -34,6 +34,8 @@ let fn = function (a, b, c) {
 fn(...ary);//把数组中的每一项分别传递给一个函数，此时我们使用展开运算符把数组展开即可
 
 
+// 拓展运算符  
+// 1.复制数组和复制对象（深拷贝）
 //把当前对象克隆一份
 let obj = { name: 'xxx', age: 20 };
 let newObj = { ...obj, sex: 0 };
@@ -41,3 +43,23 @@ let newObj = { ...obj, sex: 0 };
 
 let ary = [12, 23, 34]
 let newAry = [...ary, 100];//[12,23,100]
+// 2合并数组和合并对象
+const a = [1, 2, 3]
+const b = [4, 5]
+console.log([...a, ...b])
+
+// 3.类数组对象数组化
+// [...arg]
+// 4.代替 apply 方法(展开运算符)
+let fn = function (a, b, c) {
+    console.log(a, b, c);//a:12,b:23,c:34
+}
+fn(...ary);
+
+
+// 剩余操作符
+// 剩余操作符将多个值收集为一个变量，而扩展操作符是将一个数组扩展成多个值。
+const [a, ...b] = [1, 2, 3]
+
+console.log(a) // 1
+console.log(b)

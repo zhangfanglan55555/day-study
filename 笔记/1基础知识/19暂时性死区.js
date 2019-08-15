@@ -1,8 +1,7 @@
 var a = 12;
 if(true){
-    console.log(a);//a is not defined
+    console.log(a);//Cannot access 'a' before initialization 初始化前无法访问'a'
     let a = 13;//基于let声明，会把大部分{}当成一个块级私有作用域，在这里也会重新检测语法看是否基于新语法创建
-
 }
 
 
@@ -10,7 +9,7 @@ console.log(typeof b);//'undefined' 在原有浏览器渲染机制下，基于ty
 // 会返回'undefined'
 
 
-console.log(typeof a );//a is not defined
+console.log(typeof a );//Cannot access 'a' before initialization 初始化前无法访问'a'
 let a ;//如果当前作用域下变量使用let声明，再声明之前使用typeof检测不会发生js暂时性死区，会直接报错
 
 

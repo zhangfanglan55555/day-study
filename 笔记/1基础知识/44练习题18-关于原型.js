@@ -32,8 +32,6 @@ function getName() {
 }
 Foo.getName();
 getName();
-Foo.getName();
-getName();
 new Foo.getName();
 new Foo().getName();
 new new Foo().getName();
@@ -41,8 +39,6 @@ new new Foo().getName();
 
 /***
  * 
- * 2
- * 5
  * 2
  * 5
  * 2

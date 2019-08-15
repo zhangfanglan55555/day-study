@@ -20,6 +20,8 @@ obj.fn(3);
 console.log(n, obj.n)
 
 /**
+ *  4
+ *  4
  *   9
  *   10
  *   8 6
