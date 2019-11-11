@@ -39,7 +39,7 @@ link.onclick = function (ev) {
 // 禁止文本框输入
 input.onkeydown = function (ev) {
     ev = ev || window.event;
-    ev.preventDefault ? ev.preventDefault() : returnValue = false;
+    ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 
 }
 
@@ -54,7 +54,7 @@ input.onkeydown = function (ev) {
         // 阻止默认行为，去除特殊按键(del\backspace\方向键...)
         let code = ev.which || ev.keyCode;
         if (!/(^(46|8|37|38|39|40))/.test(code)) {
-            ev.preventDefault ? ev.preventDefault() : returnValue = false;
+            ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
         }
     }
 }

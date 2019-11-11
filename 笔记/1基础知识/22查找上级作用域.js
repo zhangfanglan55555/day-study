@@ -13,7 +13,7 @@ function fn(){
      * arguments:实参集合
      * 严格模式不让用：callee\caller
      * arguments.callee:函数本身FN 
-     * arguments.callee.caller:当前函数在哪儿执行的，如果是全局执行的就是null;caller记录的是他执行时候的宿主环境
+     * arguments.callee.caller:当前函数在哪儿执行的，如果是全局执行的就是null; 
      * 
      * 
      */

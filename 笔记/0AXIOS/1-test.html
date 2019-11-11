@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="axios.js"></script>
+</head>
+
+<body>
+    <script>
+        /**
+         * axios:它是一个类库，基于PROMISE管理的AJAX库
+         *  1.提供了对应请求方式的方法(例如：get/post/head/delete/put/options)
+         *      axios.get( ) 向服务器发送一个请求，基于的是GET方式
+         *  2.支持的参数配置
+         *   axios.get([URL],[OPTIONS])
+         *  3.基于GET或者POST方法发请求，返回的结果都是PROMISE实例
+         */
+        // 参数加在url?后面
+        axios.get('url', {
+            params: {//GET请求中，会把params中的键值对拼接成URLENCODE格式的字符串，然后以问号传递参数的方式。
+                // 传递给服务器，类似于JQ-AJAX中的DATA（或者自己基于URL后面拼接也可以，不用PARAMS）
+                name: 'zhangsan',
+                age: 9
+            }
+        });
+        axios.post('url', {
+            // 配置项中传递的内容都相当于基于请求主体传递给服务器，但是传递给服务器的内容格式是RAW(JSON格式的字符串)，不是X-www-FORM-ULENCOEDE
+            name: 'zhangsan',
+            age: 9
+        })
+
+
+        let promise = axios.get('url?name=zhangsan&age=9')
+        promise.then(result => {
+            /**
+             * data:从服务器获取的响应主体内容
+             * headers:从服务器获取的响应的头信息
+             * request:创建的AJAX实例
+             * status:状态码
+             * statusText:状态码的描述
+             * config:基于AXIOS 发送请求的时候做的配置项
+            */
+        }).catch(msg => {
+            console.log(msg);
+            //请求失败的原因  
+        })
+
+        let promise = axios.post('url', { name: 'zf', age: 9 });
+        promise.then(result => {
+            let { data } = result;
+            return axios.post('url2')
+        }).then(result => {
+            let { data } = result  
+        }).catch(msg => {
+
+        })
+    </script>
+</body>
+
+</html>

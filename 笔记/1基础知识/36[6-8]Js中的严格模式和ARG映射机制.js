@@ -28,6 +28,7 @@ console.log(a);
  * ，也相当于给window设置了一个对象的属性，两者建立了映射的机制《=》 window.a = undefined
  * in:检测某一个属性是否隶属于这个对象，不管是私有属性还是公有属性；只要有这个属性结果就是true
  * hasOwnProperty:检测某一个属性是否为对象的私有属性（只有这个属性是私有的才可以）
+ *
  * undefined
  */
 

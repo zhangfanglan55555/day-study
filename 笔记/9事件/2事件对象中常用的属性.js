@@ -24,7 +24,7 @@ window.onload = function(ev){
 }
 // 目的:事件对象中记录了很多属性名和属性值，这些信息中心包含了当前操作的基础信息，例如：鼠标点击位置的x/y轴坐标，
 // 鼠标点击的是谁（事件源）等信息
-[MouseEvent鼠标事件对象]
+[MouseEvent鼠标事件对象] 
     ev.target //=> 事件源(操作的是哪个元素)
     ev.clientX  
     ev.clientY //当前鼠标触发点距离当前窗口左上角的X|Y轴坐标

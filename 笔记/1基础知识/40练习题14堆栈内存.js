@@ -15,9 +15,6 @@ fn(5);
 obj.fn(10);
 console.log(num, obj.num);
 
-
-
-
 /***
  * 22
  * 23 

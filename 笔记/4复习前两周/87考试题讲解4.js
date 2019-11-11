@@ -18,8 +18,6 @@ console.log(i)
 // 16
 // 24
 // 24
-
-
 //  7.
 var n = 0,
     fn = function () {
@@ -33,7 +31,7 @@ var n = 0,
 var f = fn(2);
 f(3);
 fn(3)(4)
-f(4);
+f(4); 
 console.log(n);
 
 /**

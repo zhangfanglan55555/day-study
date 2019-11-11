@@ -20,7 +20,7 @@ let fn = function () {
     arg.sort(function (a, b) {
         return b - a;
     }).pop();
-    // arg.pop();//删除最后一项
+    // arg.pop();//删除最后一项 pop默认返回删除想
     arg.shift();//删除第一项
     //数组求和
     let total = eval(arg.join('+'))

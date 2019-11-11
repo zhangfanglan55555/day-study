@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 50px;
+}
+html,
+body {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#mainBox {
+  max-width: 7.5rem;
+  height: 100%;
+  position: relative;
+}
+#loadingBox {
+  height: 100%;
+  width: 100%;
+  background: #000;
+}
+#loadingBox #titleBox {
+  height: 1.4rem;
+  top: 50%;
+  left: 0;
+  margin-top: -1.5rem;
+  position: absolute;
+  width: 100%;
+}
+#titleBox h1 {
+  font-size: 0.32rem;
+  text-align: center;
+  color: #fff;
+  line-height: 0.7rem;
+}
+#titleBox h2 {
+  font-size: 0.28rem;
+  text-align: center;
+  color: #fff;
+  line-height: 0.5rem;
+}
+#progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0.85rem 0 0 -3.4rem;
+  width: 6.7rem;
+  height: 0.6rem;
+  background: #fff;
+}
+#progress #curBox {
+  width: 10%;
+  height: 0.6rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: -webkit-linear-gradient(
+    left bottom,
+    #5cb85c 0%,
+    #5cb85c 25%,
+    #74c274 25%,
+    #74c274 50%,
+    #5cb85c 50%,
+    #5cb85c 75%,
+    #74c274 75%,
+    #74c274 100%
+  );
+  background-size: 0.6rem 0.6rem;
+  animation: loadingMove 0.5s linear 0s infinite both;
+  // 动画名称  执行时间 匀速运动 延迟时间 运动次数无限次 运动结束停在最后一帧
+  transition: 0.3s;
+}
+@keyframes loadingMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -0.6rem;
+  }
+}

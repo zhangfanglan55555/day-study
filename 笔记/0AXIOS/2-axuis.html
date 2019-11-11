@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="axios.js"></script>
+</head>
+
+<body>
+    <script>
+        /**
+         * 
+        */
+        axios.get('A').then(result => {
+            return axios.get('B')
+        }).then(result => {
+            // A 和 B 都成功：RESULT是B成功后的结果
+        }).catch(msg => {
+            console.log(msg)
+        })
+
+        // sendAry存放三个AJAX请求的PROMISE实例
+        let sendAry = [axios.get('URL-A'), axios.get('URL-B'), axios.post('URL-C')];
+        // 三个请求都完成才做一些事情（可以基于ALL实现）
+        axios.all(sendAry).then(result => {
+            // result是一个数组，分别存储每一个请求的结果
+        })
+
+        let anonymous = axios.spread(() => { })
+        axios.all(sendAry).then(axios.spread((resA, resB, resC) => {
+            // RES-A/-B/-C 分别代表三次请求的结果
+            //  原理是JS中的柯理化函数
+        }))
+
+        //初始化一些常用的配置项
+        axios.defaults.baseURL = '';
+        // 自定义成功失败规则：RESOLVE/REJECT(默认规则：状态码以2开头算作成功)
+        axios.defaults.validateStatus = function validateStatus(status) {
+            return /^(2|3)\d{2}$/.test(status);
+        }
+        axios.defaults.headers.post['content-Type'] = 'application/x-www-form-urlencoded';//设置
+        // post请求方式补充上applicaton/x-www-form-urlencoded;默认是application/json;
+        axios.defaults.transformRequest = data => {
+            // data就是请求主体中需要传递给服务器的内容（对象）
+            let str = ``;
+            for (let attr in data) {
+                if (data.hasOwnProperty(attr)) {
+                    str += `${attr}=${data[attr]}&`
+                }
+            }
+            return str.substring(0, str.length - 1);
+        }
+        // 以下得不常用
+        axios.defaults.timeout = 3000;//设置超时时间
+        axios.defaults.headers = {
+            name: 'test'
+        }//自定义请求头
+        axios.defaults.params = {};//get请求传参方式
+        axios.defaults.data = {};//post请求传参方式  
+        // 使用
+        axios.get('/list').then(result => {
+
+        })
+
+        // POST:三个参数 axios.post(url[,data][,config])
+        axios.post('/add', {
+            lx: 12
+        }, {
+            headers: { xxx: 'xxx' }
+        }).then(result => {
+            console.log(result)
+        })
+
+        // 设置响应拦截器：分别在响应成功和失败的时候做一些拦截处理
+        // （在执行成功后设定的方法之前，先执行拦截器中的方法）
+        axios.interceptors.response.use(function success() {
+            // 响应成功执行，返回内容是执行成功后设定的方法
+            return result.data
+        }, function error() {
+            // 响应失败执行
+        })
+
+    </script>
+</body>
+
+</html>

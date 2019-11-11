@@ -29,5 +29,6 @@ box.onclick = function (ev) {
     // 用到谁给谁处理兼容
     ev = ev || window.event;
     var target = ev.target || ev.scrElement;
-    ev.preventDefault ? ev.preventDefault : ev.returnValue = false;
+    ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
+    ev.stopPropagation ? ev.stopPropagation() : ev.cancelBubble = true;
 }

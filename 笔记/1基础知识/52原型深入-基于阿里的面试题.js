@@ -17,8 +17,8 @@ function getName(){
     console.log(5)
 }
 Foo.getName(); 
-getName();
-Foo().getName();
+getName(); 
+Foo().getName(); 
 getName();
 new Foo.getName();
 new Foo().getName();
