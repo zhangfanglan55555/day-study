@@ -1,0 +1,42 @@
+{
+  "name": "college-m",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "186": "vue-cli-service build --mode protest",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "html2canvas": "^1.0.0-alpha.12",
+    "jquery": "^3.3.1",
+    "js-cookie": "^2.2.0",
+    "moment": "^2.22.2",
+    "nprogress": "^0.2.0",
+    "promise": "^8.0.1",
+    "vue": "^2.5.17",
+    "vue-infinite-scroll": "^2.0.2",
+    "vue-router": "^3.0.1",
+    "vue-scroller": "^2.2.4",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-rc.12",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.12",
+    "@vue/cli-plugin-unit-jest": "^3.0.0-rc.12",
+    "@vue/cli-service": "^3.0.0-rc.12",
+    "@vue/eslint-config-prettier": "^3.0.1",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.0.1",
+    "css-loader": "^1.0.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.23.0",
+    "vue-loader": "^15.4.1",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
