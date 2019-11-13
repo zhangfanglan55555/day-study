@@ -25,7 +25,7 @@
                 url += `${ajaxPromise.check(url)}${ajaxPromise.formatData(params)}`
             }
             if (cache === false) {
-                url += `${ajaxPromise.check(url)}_=$${+(new Date())}`
+                url += `${ajaxPromise.check(url)}_=$${+(new Date().getTime())}`
             }
             date = null;//get系列请求主体就是什么都不放
         } else {

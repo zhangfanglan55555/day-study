@@ -28,7 +28,7 @@
             }
         });
         axios.post('url', {
-            // 配置项中传递的内容都相当于基于请求主体传递给服务器，但是传递给服务器的内容格式是RAW(JSON格式的字符串)，不是X-www-FORM-ULENCOEDE
+            // 配置项中传递的内容都相当于基于请求主体传递给服务器，但是传递给服务器的内容格式是RAW(JSON格式的字符串)，不是x-www-FORM-urlencoded
             name: 'zhangsan',
             age: 9
         })
@@ -54,7 +54,7 @@
             let { data } = result;
             return axios.post('url2')
         }).then(result => {
-            let { data } = result  
+            let { data } = result
         }).catch(msg => {
 
         })
