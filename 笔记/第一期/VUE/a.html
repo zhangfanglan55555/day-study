@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    全选 <input type="checkbox" v-model="checks">
+    <input type="checkbox" v-for="(item,index) in checkList" v-model="item.value">
+    <!-- <input type="checkbox" v-for="(item,key) in checkList" v-model="item.value" :key="key"> -->
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        checkList: [{ value: false }, { value: true }]
+      },
+      computed: {
+        checks: {
+          get() {
+            return this.checkList.every(check => check.value)
+          },
+          set(value) {
+            this.checkList.forEach(check => check.value = value)
+          }
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

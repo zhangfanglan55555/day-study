@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>filter</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{newName}}</p>
+    {{name | capitalize(2)}}
+    <!-- | 是管道符 用后面的方法过滤前面的数据 -->
+    <my-component></my-component>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+  <script>
+    // 过滤器 只改变数据的展示形式 并不会改变原数据  类似 computed 
+    // 过滤器  也有全局  局部
+    // 指令和过滤器中的this都是window
+    Vue.filter('capitalize', function (value, len) {
+      return value.slice(0, len).toUpperCase() + value.slice(len)
+    })
+    // webpack结合懒加载使用
+    Vue.component('myComponent',function(resolve){
+      setTimeout(()=>{
+        resolve({
+          template:"<h1>hello</h1>"
+        })
+      },500)
+    })
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        name: "zfjg"
+      },
+      computed: {
+        newName() {
+          return this.name.slice(0, 1).toUpperCase() + this.name.slice(1)
+        }
+      },
+      mounted() {
+
+      },
+    })
+
+  </script>
+</body>
+
+</html>

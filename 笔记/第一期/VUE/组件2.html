@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 组件化开发优点：
+    - 方便协作
+    - 方便维护
+    - 方便复用 (数据是根据传入的数据展示)
+  -->
+  <!-- 组件的定义方式
+    - 全局组件
+
+    - 局部组件
+  -->
+  <div id="app">
+    <!-- <my-button></my-button> -->
+    <my-button :a="1" b="b" c="c"></my-button>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+  <script>
+    // 全局组件
+    // Vue.component("my-button", {
+    //   data() {
+    //     return { msg: "点我" }
+    //   },
+    //   template: `<button>{{msg}}</button>`
+    // })
+    let vm = new Vue({//根实例
+      el: '#app',
+      data: {
+        content: '点我'
+      },
+      components: {
+        'MyButton': {//html不支持大写的组件，用的时候也是<my-button></my-button>
+          props: {
+            msg: {
+              type: String,
+              default: '默认值啊'//不填的话(就是完全没有传这个属性)默认值,//传变量的话 要加冒号 :msg
+            },
+            a: {
+              type: Number,//传的是个key 一个属性，所以默认是string
+
+            },
+           
+            // b: {
+            //   type: String,
+            //   // validator(value) {
+            //   //   return value > 3;//属性校验
+            //   // },
+            //   default:'bbb'
+            // },
+            
+            arr: {
+              type: Array,//
+              default: () => ([1, 2]) //属性校验总 如果是数组或对象，需要将默认值返回
+              // default: () => ({1, 2})
+            }
+          },
+          inheritAttrs:true,
+          template: `<button>{{msg}}{{a}}</button>`,
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

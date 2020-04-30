@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas-save-resotre</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #myCanvas {
+            width: 100%;
+            height: 100%;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id='myCanvas'></canvas>
+    <script>
+        var myCanvas = document.getElementById("myCanvas");
+        var ctx = myCanvas.getContext('2d');
+        //初始圆
+        ctx.arc(10, 10, 10, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.scale(1, 1);
+        //横纵坐标都放大了2倍
+        //半径也放大了2倍
+        ctx.strokeStyle = 'red';
+        ctx.arc(50, 50, 50, 0, 2 * Math.PI);
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

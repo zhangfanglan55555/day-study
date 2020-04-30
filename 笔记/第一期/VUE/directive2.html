@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>directive2</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-split="msg">
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+  <script>
+    Vue.directive('split', {
+      bind(el, bindings, vnode) {
+        let ctx = vnode.context;
+        el.addEventListener('input', (e) => {
+          console.log(e)
+          let val = e.target.value.slice(0, 3);//输入框中的内容
+          ctx[bindings.expression] = val;
+          el.value = val;
+        })
+        // 赋予默认值
+        el.value=ctx[bindings.expression]
+      }
+    })
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        msg: 'a'
+      }
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>全选</title>
+</head>
+
+<body>
+  <div id="app">
+    全选 <input type="checkbox" v-model="checkAll">
+    <input type="checkbox" v-for="(item,key) in checks" v-model="item.value" :key="key">
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        checks: [{ value: true }, { value: false }, { value: true }]
+      },
+      computed: {
+        checkAll: {
+          get() {
+            return this.checks.every(check => check.value)
+            // every有一个是false就是false
+            // some 有一个是true就是true
+          },
+          set(value) {
+            // 双向绑定数据
+            this.checks.forEach(check => check.value = value)
+          }
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

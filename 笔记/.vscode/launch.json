@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+
+        {
+        "name": "ts-node",
+        "type": "node",
+        "request": "launch",
+        "program": "注意看这里，要写成ts-node对应的可执行文件，Windows 用户注意了，你应该写成 ${workspaceRoot}/node_modules/ts-node/dist/bin.js",
+        "args": ["${relativeFile}"],
+        "cwd": "${workspaceRoot}",
+        "protocol": "inspector"
+        }
+    ]
+}

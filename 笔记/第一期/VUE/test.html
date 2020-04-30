@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <my-Component @click='changeData' ref='myCom'></my-Component>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+  <script>
+    Vue.component('myComponent', {
+      data: {},
+      template: `
+        <div>
+            <button @click='$listeners.click()'>点击</button>
+            <button @click='$emit("click")'>点击</button>
+            <button v-on='$listeners'>点击</button>
+            <div>
+              <button @click='$listeners.click()'>点击</button>
+              <button @click='$emit("click")'>点击</button>
+              <button v-on='$listeners'>点击</button>
+            </div>
+        </div>
+      `
+    })
+    let vm = new Vue({
+      el: "#app",
+      data: {
+
+      },
+      mounted() {
+        console.log(this.$refs.myCom)
+      },
+      methods: {
+        changeData() {
+          console.log('ddd')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

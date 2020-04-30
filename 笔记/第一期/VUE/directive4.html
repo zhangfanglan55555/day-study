@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>directive</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-split="msg" v-focus>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+  <script>
+    // 指令 全局  局部
+    // 全局  默认函数形式  =  update + bind
+    // inserted
+    // unbind unComponent
+    Vue.directive('focus', {
+      // bind(el) {
+      //   Vue.nextTick(() => {
+      //     el.focus();//等dom加载完毕
+      //   })
+
+      inserted(el) {
+        el.focus() ;// 这个时机会比bind晚一些 只有 dom渲染完成后执行
+      }
+    })
+    Vue.directive("split", function (el, bindings, vNode) {
+      let ctx = vNode.context; //获取当前输入框所在的上下文
+      let vl = el.value.slice(0, 3);
+      // 去当前上下文中 获取msg变量 把输入的内容 截取3个 放到msg中
+      ctx[bindings.expression] = vl;
+    })
+    let vm = new Vue({
+      el: "#app",
+      data() {
+        return {
+          msg: 'a'
+        }
+      },
+      mounted() {
+        setTimeout(() => {
+          this.msg = 'vvv';//上面两种写法与v-model联用，这样更新起作用了
+          console.log('setTimeout')
+        }, 500)
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

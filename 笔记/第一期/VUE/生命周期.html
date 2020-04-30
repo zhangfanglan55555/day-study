@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>声明周期</title>
+</head>
+
+<body>
+  <div id="app">{{b}}</div>
+  <script src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        a: 1,
+        b: 2
+      },
+      beforeCreate() {
+        console.log(this);//初始化自己的生命周期，并且绑定自己的时间
+        // 拿不到data里的数据，也无法操作实例的属性和方法
+      },
+      created() {
+        console.log(this.$data)
+        // 可以获取数据和调用方法,挂载元素之前
+        // console.log(this.$el.innerHTML);//拿不到$el
+      },
+      beforeMount() {
+        // 第一次调用渲染函数之前,获取不到dom
+        // 挂载元素之前
+      },
+      mounted() {
+        // 渲染后，挂载元素之后
+        this.a = 100;
+        setTimeout(() => {
+          this.b = '2222'
+        }, 1000)
+      },
+      beforeUpdate() {
+        // 更新前 dom里面用到的数据
+        this.b = 300
+        console.log('更新前')
+      },
+      updated() {
+        // 更新后
+        console.log('更新后')
+      },
+      beforeDestroy() {
+        // 当前实例还可以用
+      },
+      destroyed() {
+        // 实例上的方法 监听都被移除掉了
+      },
+    })
+    // destroyed执行的情况：
+    // 第一种路由切换
+    // 第二种 手动 销毁
+    // vm.$destroyed();
+  </script>
+</body>
+
+</html>

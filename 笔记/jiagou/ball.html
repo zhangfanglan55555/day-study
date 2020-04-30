@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ball</title>
+    <style>
+        .ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .ball1 {
+            background: red;
+        }
+
+        .ball2 {
+            background: yellow;
+        }
+
+        .ball3 {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ball ball1" style='margin-left: 0;'></div>
+    <div class="ball ball2" style='margin-left: 0;'></div>
+    <div class="ball ball3" style='margin-left: 0;'></div>
+    <script>
+        let ball1 = document.querySelector('.ball1')
+        let ball2 = document.querySelector('.ball2')
+        let ball3 = document.querySelector('.ball3')
+        function move(ball, target, cb) {
+            let timer = setInterval(function () {
+                let left = parseInt(ball.style.marginLeft);
+                if (left < target) {
+                    ball.style.marginLeft = (left + 1) + 'px';
+                } else {
+                    clearInterval(timer)
+                    cb()
+                }
+            }, 4)
+        }
+        move(ball1, 100, function () {
+            move(ball2, 100, function () {
+                move(ball3, 100, function () {
+                    alert('over')
+                })
+            })
+        })
+        // 用Promise实现
+        function move(ball, target) {
+            return new Promise(function (resolve, reject) {
+                let timer = setInterval(function () {
+                    let index = 0;
+                    let left = parseInt(ball.style.marginLeft);
+                    if (index++ < target) {
+                        ball.style.transform = `translateX(${index}px)`;//避免重绘或者回流
+                    } else {
+                        clearInterval(timer)
+                        resolve();
+                    }
+                }, 13)
+            })
+        }
+        move(ball1, 100).then(function () {
+            return move(ball2, 100)
+        }).then(function () {
+            return move(ball3, 100)
+        }).then(function () {
+            alert('over')
+        })
+        // genertor+promise实现
+        function* go() {
+            yield move(ball1, 100);
+            yield move(ball2, 100);
+            yield move(ball3, 100);
+        }
+        co(go)
+        // async+await
+        async function go() {
+            await move(ball1, 100)
+            await move(ball2, 100)
+            await move(ball3, 100)
+        }
+        go();
+    </script>
+</body>
+
+</html>

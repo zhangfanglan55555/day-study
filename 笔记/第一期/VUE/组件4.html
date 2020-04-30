@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 组件化开发优点：
+    - 方便协作
+    - 方便维护
+    - 方便复用 (数据是根据传入的数据展示)
+  -->
+  <!-- 组件的定义方式
+    - 全局组件
+
+    - 局部组件
+  -->
+  <div id="app">
+    <my-button :a="1" b="2" @click="changeClick"></my-button>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+  <script>
+    let vm = new Vue({//根实例
+      el: '#app',
+      data: {
+        content: '点我'
+      },
+      methods: {
+        changeClick() {
+          console.log(1)
+        }
+      },
+      components: {
+        "myButton": {
+          mounted() {
+            
+          },
+          props: ['a', 'b'],
+          template:
+            `<div>
+              <button @click='$listeners.click()'>点击</button>
+              <button @click='$emit("click")'>点击</button>
+              <button v-on='$listeners'>点击</button>
+            </div>`
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

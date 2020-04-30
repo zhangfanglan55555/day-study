@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<!-- 
+  watch 和 method 的区别 : watch 会缓存 method 没有缓存
+
+  watch 和 computed 区别 : 
+    watch 里可以支持异步代码，可以实现一些简单的功能
+    computed 无法异步获取用户，
+ -->
+
+<body>
+  <div id="app">
+    {{ fullName }}
+    <!-- fullName 虽然写的是方法，但是实际上是属性，用的时候不带() -->
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        firstName: '珠',
+        lastName: '锋'
+      },
+      mounted() {
+        this.getFullName();
+        //如果用watch的话第一次进页面不主动调方法，不会展示；如果写了immediate:true就可以不用主动调了
+      },
+      watch: {
+        // 简写
+        firstName(newValue) {
+          this.getFullname();
+        },
+        // 完整写法
+        lastName: {
+          handler(newValue) {
+            setTimeout(() => {
+              this.getFullname()
+            }, 1000)
+          },
+          immediate: true//绑定后立即执行
+        }
+      },
+      computed: {
+        // 计算属性
+        // Object.defineProperty来实现
+        fullName() { // get方法，
+          return this.firstName + this.lastName
+        }
+      },
+      methods: {
+        getFullName() {
+          return this.firstName + this.lastName
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
